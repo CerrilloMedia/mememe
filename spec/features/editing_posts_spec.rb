@@ -5,12 +5,11 @@ feature 'Editing posts' do
   # repeatable before any scenario test
   background do
     user = create :user
-    user_two = build(:user, email: 'everything@example.com',
+    user_two = create(:user, email: 'everything@example.com',
                              username: 'BennyBoy',
                              id: user.id + 1)
-
     post = create(:post, user_id: user.id )
-    post_two = create(:post, user_id: user.id + 1)
+    puts post_two = create(:post, user_id: user.id + 1)
 
     sign_in_with user
     visit '/'
@@ -33,7 +32,6 @@ feature 'Editing posts' do
     find(:xpath, "//a[contains(@href, 'posts/2')]").click
 
     expect(page).not_to have_content("Edit Post")
-
   end
 
   scenario  "can not edit a post that doesn't belong to you via url page" do

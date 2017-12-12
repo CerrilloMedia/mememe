@@ -6,7 +6,7 @@ feature "Deleting Posts" do
 
   background do
     user = create :user
-    post = create(:post, caption: caption)
+    post = create(:post, caption: caption, user_id: user.id)
 
     sign_in_with user
 

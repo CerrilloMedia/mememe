@@ -68,7 +68,7 @@ class PostsController < ApplicationController
 
   def owned_posts
     @post = Post.find(params[:id])
-    
+
     unless @post.user == current_user
       flash[:alert] = "That post doesn't belong to you!"
       redirect_to root_path

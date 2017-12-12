@@ -4,8 +4,8 @@ feature 'Index displays a list of posts' do
 
   before do
     user = create :user
-    @post_one = create(:post)
-    @post_two = create(:post, caption: "This is the second post")
+    @post_one = create(:post, user_id: user.id)
+    @post_two = create(:post, caption: "This is the second post", user_id: user.id)
 
     sign_in_with user
 
