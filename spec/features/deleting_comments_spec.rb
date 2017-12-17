@@ -26,7 +26,7 @@ feature 'Deleting comments' do
     expect(page).to have_content('My rude comment should be deleted')
 
     within("#comment_1") do
-      click_link 'Delete'
+      find('.comment-delete').click
     end
 
     expect(page).not_to have_content('My rude comment should be deleted')
@@ -36,7 +36,7 @@ feature 'Deleting comments' do
     visit '/'
 
     within("#comment_2") do
-      expect(page).not_to have_link "Delete"
+      expect(page).not_to have_link('.comment-delete')
     end
 
     expect(page).to have_content('this is 2nd comment')

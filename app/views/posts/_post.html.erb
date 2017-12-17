@@ -19,26 +19,31 @@
           <div class="user-name">
             <%= post.user.username %>
           </div>
-          <%= post.caption %>
-        </div>
-        <% if post.comments %>
-          <div id="comments_<%= post.id %>">
-            <% post.comments.each do |comment| %>
-              <div class="comment" id="comment_<%= comment.id %>">
-                <div class="user-name">
-                  <%= comment.user.username %>
-                </div>
-                <div class="comment-content">
-                  <%= comment.content %>
-                </div>
-                <div class="clearfix"></div>
-                  <!-- <% if current_user.id == comment.user_id %> -->
-                    <%= link_to 'Delete', post_comment_path(post,comment), class: 'btn btn-danger ', method: :delete, data: {confirm: 'Are you sure?' } %>
-                  <!-- <% end %> -->
-              </div>
-            <% end %>
+          <div class="user-caption">
+            <%= post.caption %>
           </div>
-        <% end %>
+        </div>
+      </div>
+      <% if post.comments %>
+        <div id="comments_<%= post.id %>">
+          <% post.comments.each do |comment| %>
+            <div class="comment" id="comment_<%= comment.id %>">
+              <div class="user-name">
+                <%= comment.user.username %>
+              </div>
+              <div class="comment-content">
+                <%= comment.content %>
+                <% if current_user.id == comment.user_id %>
+                  <%= link_to post_comment_path(post,comment), class: 'comment-delete', method: :delete, data: {confirm: 'Are you sure?' } do %>
+                    <i class="glyphicon glyphicon-remove-sign"></i>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="comment-like-form row">
       <div class="like-button col-sm-1">

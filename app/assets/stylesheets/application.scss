@@ -90,6 +90,12 @@ body {
    }
    .caption {
      margin-bottom: 7px;
+     .user-caption {
+       pull: right;
+     }
+   }
+   .comment:nth-child(even) {
+     background: rgba(0,0,0,.02);
    }
    .user-name {
      font-weight: 500;
@@ -99,6 +105,9 @@ body {
    }
    .user-name, .caption-content {
      display: inline;
+   }
+   .caption-content {
+     padding-bottom: .3em;
    }
    #comment {
      margin-top: 7px;
