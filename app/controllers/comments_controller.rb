@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
       end
       # removed flash message as the refresh should only update the content of the comments div
     else
-      flash[:alert] = "Error. Please try again."
+      flash[:alert] = @comment.errors.full_messages.join(',')
       redirect_to root_path
     end
 
