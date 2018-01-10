@@ -88,15 +88,18 @@ body {
    .user-name, .comment-content {
      display: inline;
    }
+
    .caption {
      margin-bottom: 7px;
      .user-caption {
        pull: right;
      }
    }
-   .comment:nth-child(even) {
-     background: rgba(0,0,0,.02);
-   }
+
+    [id^="comment_"] div:nth-child(even) {
+      background: rgba(0,0,0,.02);
+    }
+
    .user-name {
      font-weight: 500;
      margin-right: 0.3em;

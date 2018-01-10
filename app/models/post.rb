@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
 
   has_attached_file :image, styles: { :medium => "640x" }
 
+  validates length
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\z/
-
+  accepts_nested_attributes_for :comments
 end

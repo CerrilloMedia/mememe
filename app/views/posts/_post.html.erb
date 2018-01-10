@@ -1,5 +1,5 @@
 <div class="posts-wrapper">
-  <div class="post">
+  <div class="post" id="post_<%= post.id %>">
     <div class="post-head">
       <div class="thumb-img">
       </div>
@@ -23,33 +23,28 @@
             <%= post.caption %>
           </div>
         </div>
+        <% if post.comments %>
+          <hr class='comments-break'>
+          <div class="comments" id="comments_<%= post.id %>">
+            <%= render post.comments, locals: { post: post } %>
+          </div>
+        <% end %>
       </div>
-      <% if post.comments %>
-        <div id="comments_<%= post.id %>">
-          <% post.comments.each do |comment| %>
-            <div class="comment" id="comment_<%= comment.id %>">
-              <div class="user-name">
-                <%= comment.user.username %>
-              </div>
-              <div class="comment-content">
-                <%= comment.content %>
-                <% if current_user.id == comment.user_id %>
-                  <%= link_to post_comment_path(post,comment), class: 'comment-delete', method: :delete, data: {confirm: 'Are you sure?' } do %>
-                    <i class="glyphicon glyphicon-remove-sign"></i>
-                  <% end %>
-                <% end %>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
     <div class="comment-like-form row">
       <div class="like-button col-sm-1">
         <span class="glyphicon glypihicon-heart-empty"></span>
       </div>
       <div class="comment-form col-sm-11">
-        <%= render partial: 'comment_form', locals: { post: post } %>
+        <%= form_for([post, post.comments.build], remote: true) do |f| %>
+          <div class="form-group">
+            <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
+          </div>
+          <div class="form-group text-center">
+            <%= f.submit "Submit", class: 'btn btn-default' %>
+          </div>
+        <% end %>
       </div>
     </div>
+  </div>
+</div>
+</div>

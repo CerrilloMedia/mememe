@@ -7,21 +7,28 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      flash[:notice] = "Comment posted!"
-      redirect_to @post
+
+      respond_to do |format|
+        format.html { redirect_to @post || root_path }
+        format.js
+      end
+      # removed flash message as the refresh should only update the content of the comments div
     else
       flash[:alert] = "Error. Please try again."
-      redirect_to @post
+      redirect_to root_path
     end
 
   end
 
   def destroy
+
     @comment = @post.comments.find(params[:id])
 
     if current_user.id == @comment.user.id && @comment.delete
-      flash[:notice] = "Comment successfully removed."
-      redirect_to @post
+      respond_to do |format|
+        format.html {redirect_to @post}
+        format.js
+      end
     else
       flash[:alert] = "Unable to remove comment."
       redirect_to @post

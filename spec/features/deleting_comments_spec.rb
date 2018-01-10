@@ -43,14 +43,14 @@ feature 'Deleting comments' do
   end
 
   scenario 'user can not delete someone elses comment through url' do
+    # user logged in
     visit '/'
 
     expect(page).to have_content('this is 2nd comment')
 
-    page.driver.submit :delete, "/posts/1/comments/2", {}
+    page.driver.delete '/posts/1/comments/2', {}
 
     expect(page).to have_content('this is 2nd comment')
-    expect(page).to have_content('Unable to remove comment.')
   end
 
 end
