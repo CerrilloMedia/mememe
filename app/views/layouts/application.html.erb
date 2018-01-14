@@ -39,14 +39,14 @@
       </div>
     </div>
   </nav>
-  <% if flash %>
     <div class="container">
       <!-- flash messages container -->
-      <% flash.each do |name,msg| %>
-        <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+      <% if flash %>
+        <% flash.each do |name,msg| %>
+          <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+        <% end %>
       <% end %>
-      <%= yield %>
     </div>
-<% end %>
+    <%= yield %>
 </body>
 </html>

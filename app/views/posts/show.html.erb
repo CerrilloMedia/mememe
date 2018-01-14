@@ -1,9 +1,11 @@
-<%= render partial: 'post', locals: { post: @post } %>
-<div class="text-center edit-links">
-  <% if current_user.id == @post.user_id %>
-    <%= link_to "Cancel", posts_path, class: 'btn btn-warning' %>
-    <%= link_to "Edit Post", edit_post_path(@post), class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to "Cancel", posts_path, class: 'btn btn-warning' %>
-  <% end %>
+<div class="container">
+  <%= render partial: 'post', locals: { post: @post } %>
+  <div class="text-center edit-links">
+    <% if current_user.id == @post.user_id %>
+      <%= link_to "Cancel", posts_path, class: 'btn btn-warning' %>
+      <%= link_to "Edit Post", edit_post_path(@post), class: 'btn btn-danger' %>
+    <% else %>
+      <%= link_to "Cancel", posts_path, class: 'btn btn-warning' %>
+    <% end %>
+  </div>
 </div>

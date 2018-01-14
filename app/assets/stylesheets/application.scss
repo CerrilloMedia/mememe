@@ -16,9 +16,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html {
+  height: 100%;
+}
+
 body {
    background-color: #fafafa;
    font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+   height: 100%;
  }
 
  /* ## NAVBAR CUSTOMISATIONS ## */
@@ -42,10 +47,85 @@ body {
    margin: 0 auto;
  }
 
+ /* ## SignUp  ## */
+
+.registration-bg {
+  padding-top: 4em;
+  height: 100%;
+  background-image: image-url('john-cobb-13961.jpg');
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.log-in-bg {
+  padding-top: 4em;
+  height: 100%;
+  background-image: image-url('thomas-griesbeck-149034.jpg');
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.log-in {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border: none;
+  box-shadow: 2px 2px 15px 0px rgba(0,0,0,.4);
+
+  .error_notification {
+    background: #bf5959;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding: .5em 0;
+    color: white;
+  }
+}
+
+.panel {
+  border-radius: 8px;
+}
+
+.panel-heading {
+  h1 {
+    text-align: center;
+  }
+}
+
+.panel-body {
+  .input {
+    padding-top: .5em;
+    input {
+      padding: .4em;
+      border-radius: .2em;
+      width: 100%;
+      border: 1px solid rgba(0,0,0,.2);
+      box-sizing: border-box;
+      outline-color: #12b7b7;
+    }
+    span.error {
+      color: #bf5959;
+    }
+  }
+
+  input[type="submit"] {
+    background: #12b7b7;
+    width: 100%;
+    color: white;
+    border-radius: .3em;
+    padding: .5em 0;
+    outline: none;
+    margin-top: .5em;
+  }
+}
+
  /* ## POST CUSTOMISATIONS ## */
 
  .posts-wrapper {
-   padding-top: 40px;
+   padding-top: 20px;
    margin: 0 auto;
    max-width: 642px;
    width: 100%;
