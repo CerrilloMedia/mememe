@@ -131,6 +131,10 @@ body {
    width: 100%;
  }
 
+ #paginator {
+   margin: 1em auto 0;
+ }
+
  .post {
    background-color: #fff;
    border-color: #edeeee;
@@ -162,6 +166,10 @@ body {
      border-bottom: 1px solid #eeefef;
      border-top: 1px solid #eeefef;
    }
+ }
+
+ .post:Last-Child {
+   margin-bottom: 0;
  }
 
  .post-bottom {
@@ -230,6 +238,14 @@ body {
    flex-direction: row;
    justify-content: center;
  }
+
+/*
+  << PAGINATION ADJUSTMENTS WITHIN POSTS#INDEX >>
+*/
+
+.paginate-links {
+  text-align: center;
+}
 
 
  /* ## Wrapper and styling for the new and edit views ## */

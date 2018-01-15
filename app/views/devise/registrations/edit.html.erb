@@ -10,7 +10,7 @@
 
         <div class="panel-body">
           <%= f.input :email, label: false, palceholder: "email", required: true, autofocus: true %>
-          <%= f.input :username, label: false, palceholder: "username", required: true %>
+          <%= f.input :username, label: false, placeholder: "username", required: true %>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>

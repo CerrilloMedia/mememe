@@ -9,9 +9,11 @@
     <h3>
       Current posts:
     </h3>
-  <div class="posts-wrapper row">
-    <% @posts.each do |post| %>
-      <%= render partial: 'post', locals: {post: post} %>
-    <% end %>
+  <div id="posts">
+    <%= render 'posts' %>
   </div>
+  <div id="paginator" class="text-center">
+    <%= link_to_next_page @posts, 'LOAD', remote: true, id: 'load_more', class: 'btn btn-default' %>
+  </div>
+  <%= render partial: 'paginate', locals: { posts: @posts} %>
 </div>
