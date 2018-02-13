@@ -1,1 +1,8 @@
-$('#comments_<%= @post.id %>').html("<%= j render @post.comments, post: @post, comment: @comment %>");
+var el = $("#comments_<%= @post.id %>");
+var commentCount = parseInt("<%= @post.comments.count %>");
+el.html('<%= j render @post.comments.last(3), local: { post: @post, comment: @comment } %>');
+
+if (commentCount > 3) {
+  var html = '<a class="show-comments-post-<%= @post.id %>" data-remote="true" href="/posts/<%= @post.id %>/comments">Show All</a>';
+  el.prepend(html);
+};

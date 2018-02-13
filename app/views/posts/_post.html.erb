@@ -23,13 +23,17 @@
             <%= post.caption %>
           </div>
         </div>
-        <% if post.comments %>
-          <hr class='comments-break'>
-          <div class="comments" id="comments_<%= post.id %>">
-            <%= render post.comments, locals: { post: post } %>
-          </div>
-        <% end %>
       </div>
+        <% if post.comments %>
+        <hr class='comments-break'>
+          <div class="comments" id="comments_<%= post.id %>">
+            <% if post.comments.count > 3 %>
+              <%= link_to "Show All", post_comments_path(post), remote: true, class: "show-comments-post-#{post.id}" %>
+            <% end %>
+            <%= render post.comments.last(3), locals: { post: post } %>
+          </div>
+
+        <% end %>
     <div class="comment-like-form row">
       <div class="like-button col-sm-1">
         <span class="glyphicon glyphicon-heart-empty"></span>

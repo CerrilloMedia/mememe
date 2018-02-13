@@ -9,4 +9,6 @@ class Post < ActiveRecord::Base
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\z/
   accepts_nested_attributes_for :comments
+
+  # paginates_per 3
 end

@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
 
     if current_user.id == @comment.user.id && @comment.delete
       respond_to do |format|
-        format.html {redirect_to @post}
+        format.html { redirect_to @post }
         format.js
       end
     else
@@ -43,6 +43,8 @@ class CommentsController < ApplicationController
   end
 
   def set_post
+    # since @post is a parent of any comments it will always be required to view
+    # any comments. Always required and available.
     @post = Post.find(params[:post_id])
   end
 

@@ -4,7 +4,7 @@ Kaminari.configure do |config|
   def production?
     Rails.env.production?
   end
-
+  #
   production? ? config.default_per_page = 13 : config.default_per_page = 2
 
   # config.max_per_page = nil
