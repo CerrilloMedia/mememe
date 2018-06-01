@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+include PostsHelper
 
   before_action :authenticate_user!
 
@@ -51,7 +52,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.delete
-      flash[:notice] = "Problem solved! Post deleted."
+      # flash[:notice] = "Problem solved! Post deleted."
+      flash[:notice] = randomDeletionConfirmationMessage
       redirect_to root_path
     else
       flash[:alert] = "Error processing. please try again."

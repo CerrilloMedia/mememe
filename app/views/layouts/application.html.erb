@@ -43,10 +43,11 @@
       <!-- flash messages container -->
       <% if flash %>
         <% flash.each do |name,msg| %>
-          <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+          <%= content_tag :div, msg, class: [:alert, alert_for(name)], onchange: 'alertFade()' %>
         <% end %>
       <% end %>
     </div>
     <%= yield %>
+    <script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
 </body>
 </html>

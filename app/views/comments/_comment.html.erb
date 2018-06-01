@@ -1,6 +1,6 @@
 <div class="comment" id="comment_<%= comment.id %>">
   <div class="user-name">
-    <%= comment.user.username %>
+    <%= link_to comment.user.username, profile_path(comment.user.username) %>
   </div>
   <div class="comment-content">
     <%= comment.content %>

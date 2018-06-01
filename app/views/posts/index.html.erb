@@ -1,16 +1,22 @@
 <div class="container">
-  <h1>MeMeMe</h1>
-
   <% if current_user %>
-    <%= link_to "New Post", new_post_path, class: 'btn btn-default' %>
+  <div class="posts-wrapper pt-0">
+
+      <%= link_to new_post_path, class: 'col-xs-2 btn btn-primary add-button' do %>
+        <ion-icon name="add-circle" class="add-icon"></ion-icon>
+      <% end %>
+      <div class="col-xs-6 add-button-text hidden-xs">Create New Post</div>
+
+  </div>
   <% end %>
   <br/>
-  <div class="">
+  <div class="posts-wrapper">
     <h3>
       Current posts:
     </h3>
+  </div>
   <div id="posts">
-    <%= render 'posts' %>
+    <%= render @posts %>
   </div>
   <div id="paginator" class="text-center">
     <%= link_to_next_page @posts, 'LOAD', remote: true, id: 'load_more', class: 'btn btn-default' %>
