@@ -2,15 +2,15 @@ class PostsController < ApplicationController
 include PostsHelper
 
   before_action :authenticate_user!
-
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
   before_action :owned_posts, only: [:edit, :update, :destroy]
+
 
   def index
     @posts = Post.all.order('created_at DESC').page params[:page]
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -30,12 +30,9 @@ include PostsHelper
   end
 
   def edit
-    # @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
-
     @post.update_attributes(post_params)
 
     if @post.save
@@ -49,8 +46,6 @@ include PostsHelper
   end
 
   def destroy
-    @post = Post.find(params[:id])
-
     if @post.delete
       # flash[:notice] = "Problem solved! Post deleted."
       flash[:notice] = randomDeletionConfirmationMessage
@@ -60,6 +55,15 @@ include PostsHelper
       redirect_to @post
     end
 
+  end
+
+  def like
+    if @post.liked_by current_user
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
   end
 
   private
@@ -75,6 +79,10 @@ include PostsHelper
       flash[:alert] = "That post doesn't belong to you!"
       redirect_to root_path
     end
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 
 end
