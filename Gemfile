@@ -25,13 +25,13 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'simple_form'
-
+# add image file upload capabilities
 gem 'paperclip', '~> 5.0.0'
-
+# add user generation and management
 gem 'devise'
-
+# add pagination to posts
 gem 'kaminari'
-
+# adds voting capabilities to any model
 gem 'acts_as_votable', '~> 0.10.0'
 
 # Use ActiveModel has_secure_password

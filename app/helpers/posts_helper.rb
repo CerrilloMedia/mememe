@@ -10,7 +10,7 @@ module PostsHelper
     return confirmations.sample
   end
 
-  def likers_of(post)
+  def likers_of(post,max=3)
     votes = post.votes_for.up.by_type(User)
     user_names = []
     unless votes.blank?
@@ -19,13 +19,21 @@ module PostsHelper
                                 profile_path(voter.username),
                                 class: 'user-name')
       end
-      # to_sentence join-method (default: ", ")
-      user_names.to_sentence.html_safe + like_plural(votes)
+
+      if votes.size > max
+        votes.size.to_s + " likes"
+      else
+        user_names.first(max).to_sentence(:last_word_connector => ' and ').html_safe + like_plural(votes)
+      end
     end
   end
 
   def like_plural(votes)
     return ' like this' if votes.count > 1
     ' likes this'
+  end
+
+  def likes_post(post)
+    post.votes_for.up.by_type(User).voters.include?(current_user)
   end
 end

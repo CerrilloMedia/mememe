@@ -58,11 +58,14 @@ include PostsHelper
   end
 
   def like
-    if @post.liked_by current_user
-      respond_to do |format|
-        format.html { redirect_to :back }
-        format.js
-      end
+    if likes_post(@post)
+      @post.downvote_from current_user
+    else
+      @post.liked_by current_user
+    end
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
     end
   end
 

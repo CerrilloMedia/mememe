@@ -20,7 +20,6 @@
 
 function alertFade(duration=5, buffer=1, remove=true) {
   var alert = document.getElementsByClassName('alert')[0];
-  console.log(alert);
   if (alert) {
     alert.style.opacity = "1";
 
