@@ -60,6 +60,19 @@ body {
    background: inherit;
  }
 
+ // likes
+
+ .like-heart,
+ .like-heart:hover,
+ .like-heart:active {
+   text-decoration: none !important;
+   color: #ed0202;
+ }
+
+ .likes-frame {
+   padding: .4em 0;
+ }
+
  /* ## SignUp  ## */
 
 .registration-bg {

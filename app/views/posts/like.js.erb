@@ -1,5 +1,5 @@
-var like_parent = $("#like_<%= @post.id %>").parent();
+var like_parent = $("#like-<%= @post.id %>").parent();
 like_parent[0].innerHTML = "<%= j render 'posts/like_button', {post: @post} %>";
 
-var likes_parent = $(".likes_<%= @post.id %>");
+var likes_parent = $("#likes-<%= @post.id %>");
 likes_parent[0].innerHTML = "<%= j render 'posts/likes', {post: @post} %>";
